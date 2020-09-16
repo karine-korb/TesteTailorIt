@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/9c7e7592c2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="Script/angular.min.js"></script>
+    <script type="text/javascript" src='https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js'></script>
+    <script src="Script/index.js"></script>
+
+    <title>Employee</title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="employee">
+        <form name="formEmp" id="formEmp">
+            <h1>Cadastro de Empregados</h1>
+            <hr />
+            <p>Nome: <input type="text" ng-model="employee.firstName" ng-required="'true'" required></p>
+            <p>Sobrenome: <input type="text" ng-model="employee.lastName" ng-required="'true'" required></p>
+            <p>Data de Nascimento: <input type="date" ng-model="employee.birthDate" placeholder="dd-MM-yyyy" ng-required="'true'" required></p>
+            <p>Email: <input type="email" ng-model="employee.email"></p>
+            <p>
+                Sexo: <select ng-model="employee.gender" ng-required="'true'" required>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </p>
+            <p>Habilidades: <select ng-options="item as item.name for item in habilitiesDomain track by item.id" ng-model="employee.habilities" ng-required="'true'" required></select></p>
+            <hr />
+            <p>
+                <input type="button" class="btn btn-danger" ng-click="cancel()" value="Cancelar" />
+                <input ng-disabled="formEmp.$invalid" type="submit" class="btn btn-success" ng-click="save(employee)" value="Salvar" />
+            </p>
+        </form>
+    </div>
+</body>
+</html>
